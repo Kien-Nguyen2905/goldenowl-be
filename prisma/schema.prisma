@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model exam_results {
+  id           Int       @id @default(autoincrement())
+  sbd          String    @unique @db.VarChar(15)
+  toan         Decimal?  @db.Decimal(4, 2)
+  ngu_van      Decimal?  @db.Decimal(4, 2)
+  ngoai_ngu    Decimal?  @db.Decimal(4, 2)
+  vat_ly       Decimal?  @db.Decimal(4, 2)
+  hoa_hoc      Decimal?  @db.Decimal(4, 2)
+  sinh_hoc     Decimal?  @db.Decimal(4, 2)
+  lich_su      Decimal?  @db.Decimal(4, 2)
+  dia_ly       Decimal?  @db.Decimal(4, 2)
+  gdcd         Decimal?  @db.Decimal(4, 2)
+  ma_ngoai_ngu String?   @db.VarChar(5)
+  created_at   DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime? @default(now()) @db.Timestamptz(6)
+}
